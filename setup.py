@@ -33,6 +33,12 @@ if __name__ == "__main__":
         version=get_version(),
         description="Static SPA Generator",
         long_description=README + "\n\n" + CHANGES,
+        entry_points={
+            "console_scripts": [
+                "grits-build = grits.scripts.build:main",
+                "grits-serve = grits.scripts.serve:main"
+            ]
+        },
         classifiers=[
             "Development Status :: 2 - Pre-Alpha",
             "Intended Audience :: Developers",
