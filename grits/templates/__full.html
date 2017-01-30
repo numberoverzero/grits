@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% import page_filename as page with context %}
+    <title>{{ page.title }}</title>
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+        integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw="
+        crossorigin="anonymous" rel="stylesheet"
+    />
+    {% for filename in css_files %}
+    <link href="{{ static_file(filename, 'css') }}" rel="stylesheet" type="text/css" />
+    {% endfor %}
+
+
+    <style>
+        {% for filename in inline_css %}
+        {% include filename %}
+        {% endfor %}
+    </style>
+</head>
+<body>
+
+
+<main id="mapp-container">
+    {# rip out scripts so they don't start running before dependencies are loaded below#}
+    {% filter extract_tag("script", invert=True) %}
+    {% include page_filename %}
+    {% endfilter %}
+</main>
+
+{# some external scripts (mapp) have an immediate dependency on
+   inline scripts like rq, so they must come first.
+#}
+<script type="application/javascript">
+    {% for filename in inline_js %}
+    {% include filename %}
+    {% endfor %}
+</script>
+
+{# external scripts #}
+{% for filename in js_files %}
+<script src="{{ static_file(filename, 'js') }}" type="application/javascript"></script>
+{% endfor %}
+
+{# scripts ripped out of the partial #}
+{% filter extract_tag("script") %}
+{% include page_filename %}
+{% endfilter %}
+
+
+</body>
+</html>
