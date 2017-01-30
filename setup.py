@@ -22,7 +22,8 @@ PACKAGES = [
 
 REQUIREMENTS = [
     "click==6.7",
-    "Jinja2==2.9.5",
+    "jinja2==2.9.5",
+    "lxml==3.7.2",
     "texas==0.5.2"
 ]
 

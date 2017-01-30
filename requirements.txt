@@ -1,5 +1,7 @@
 click==6.7
 flake8==3.2.1
+jinja2==2.9.5
+lxml==3.7.2
 texas==0.5.2
 twine==1.8.1
 wheel==0.29.0
