@@ -1,0 +1,4 @@
+click==6.7
+ghp-import==0.5.4
+Jinja2==2.9.5
+texas==0.5.2
