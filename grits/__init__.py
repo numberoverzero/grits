@@ -7,7 +7,7 @@ from texas import Context
 
 from . import render
 
-__version__ = "0.1"
+__version__ = "0.2"
 GRITS_TEMPLATES = Path(os.path.abspath(os.path.dirname(__file__))).resolve() / "templates"
 
 
