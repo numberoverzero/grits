@@ -7,11 +7,6 @@
     {% import page_filename as page with context %}
     <title>{{ page.title }}</title>
 
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-        integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw="
-        crossorigin="anonymous" rel="stylesheet"
-    />
     {% for filename in css_files %}
     <link href="{{ static_file(filename, 'css') }}" rel="stylesheet" type="text/css" />
     {% endfor %}

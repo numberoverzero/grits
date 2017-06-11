@@ -53,7 +53,6 @@ class Renderer:
         render("style.css", "build/out.css") -> "build/out.css"
         render("hello.html", "output/here.html") -> "output/here.html", "output/_/here.html"
         """
-        print(f"rendering {name} {src_dir}")
         context = context or self.context
         if dst_name is None:
             dst_name = name
