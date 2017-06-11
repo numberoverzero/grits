@@ -1,1 +1,1 @@
-recursive-include grits/templates/*
+recursive-include grits/templates *
