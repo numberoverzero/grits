@@ -7,7 +7,7 @@ from texas import Context
 
 from . import render
 
-__version__ = "0.3"
+__version__ = "0.3.1"
 GRITS_TEMPLATES = Path(os.path.abspath(os.path.dirname(__file__))).resolve() / "templates"
 
 
@@ -60,7 +60,7 @@ def default_context():
         "js_files": ["static/vendor/mapp.min.js"],
         "inline_css": [],
         "inline_js": ["static/vendor/rq.min.js"],
-        "static_file": static_file
+        "static_file": static_file,
     })
     return context
 
@@ -84,4 +84,4 @@ def build(src_dir: str, out_dir: str, context: Context, jinja_options: dict=None
         if path.is_dir():
             continue
         name = str(path.relative_to(src_dir))
-        renderer.render(name)
+        renderer.render(name, src_dir=src_dir)

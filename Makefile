@@ -1,4 +1,4 @@
-.PHONY: clean local production develop serve
+.PHONY: clean publish
 
 clean:
 	rm -rf build dist
