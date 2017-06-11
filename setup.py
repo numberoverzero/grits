@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -15,10 +15,6 @@ def get_version():
         for line in f:
             if line.startswith("__version__"):
                 return eval(line.split("=")[-1])
-
-PACKAGES = [
-    "grits"
-]
 
 REQUIREMENTS = [
     "click==6.7",
@@ -55,6 +51,6 @@ if __name__ == "__main__":
         keywords="static blog spa generator",
         platforms="any",
         include_package_data=True,
-        packages=PACKAGES,
+        packages=find_packages(exclude=("test*", )),
         install_requires=REQUIREMENTS,
     )
