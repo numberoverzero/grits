@@ -1,15 +1,12 @@
 import click
 import grits
+existing_directory = click.Path(exists=True, dir_okay=True, file_okay=False)
+directory = click.Path(exists=False, dir_okay=True, file_okay=False)
 
 
 @click.command("build")
-@click.option("--src", required=True, help="source directory")
-@click.option("--dst", required=True, help="output directory")
-@click.option("--css", required=False, type=str, help="additional css files", multiple=True)
-@click.option("--js", required=False, type=str, help="additional js files", multiple=True)
-def main(src, dst, css, js):
-    ctx = grits.default_context()
-    user_ctx = ctx.include("default", "user")
-    user_ctx["css_files"].extend(css)
-    user_ctx["js_files"].extend(js)
-    grits.build(src, dst, ctx)
+@click.option("--src", required=True, type=existing_directory, help="source directory")
+@click.option("--dst", required=True, type=directory, help="output directory")
+@click.option("--tpl", required=False, type=directory, help="templates directory")
+def main(src, dst, tpl):
+    grits.build(src_dir=src, out_dir=dst, template_dir=tpl)

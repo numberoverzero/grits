@@ -17,10 +17,9 @@ def get_version():
                 return eval(line.split("=")[-1])
 
 REQUIREMENTS = [
+    "beautifulsoup4==4.6.0",
     "click==6.7",
     "jinja2==2.9.5",
-    "lxml==3.7.2",
-    "texas==0.5.2"
 ]
 
 if __name__ == "__main__":

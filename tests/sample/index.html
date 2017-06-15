@@ -1,11 +1,21 @@
-{% set title = "main page title" %}
-<div>
-    <h2 class="title">main page h2</h2>
-    <a href="subdir/index.html">sub-directory</a>
-</div>
+<head>
+    <title>main page title</title>
+</head>
+<main id="mapp-container">
+    <div>
+        <h2 class="title">main page h2</h2>
+        <a href="subdir/index.html">sub-directory</a>
+    </div>
+
 <script type="application/javascript">
     console.log("main page loaded");
-
+    mapp.onShowPage(()=>{
+        console.log("onShowPage(index.html)");
+    });
+</script>
+</main>
+<script type="application/javascript">
+    console.log("outer scripts, too");
     mapp.onShowPage(()=>{
         console.log("onShowPage(index.html)");
     });

@@ -1,52 +1,39 @@
+{#
+    Each pre-processed document have the following sections:
+        head - optional, inserted into the head block of the full page.
+        main - required, inserted into the main body of the full page.
+            must have the id "mapp-container"
+        scripts - optional, any script elements
+
+    Partials will only include the main section, while
+    head and scripts are applied to the full document.
+
+#}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% import page_filename as page with context %}
-    <title>{{ page.title }}</title>
-
-    {% for filename in css_files %}
-    <link href="{{ static_file(filename, 'css') }}" rel="stylesheet" type="text/css" />
-    {% endfor %}
-
-
-    <style>
-        {% for filename in inline_css %}
-        {% include filename %}
-        {% endfor %}
-    </style>
+    {# Include anything from the head block in the original #}
+    {{ head }}
 </head>
+
+
 <body>
-
-
 <main id="mapp-container">
     {# rip out scripts so they don't start running before dependencies are loaded below#}
-    {% filter extract_tag("script", invert=True) %}
-    {% include page_filename %}
-    {% endfilter %}
+    {{ main }}
 </main>
-
-{# some external scripts (mapp) have an immediate dependency on
-   inline scripts like rq, so they must come first.
-#}
 <script type="application/javascript">
-    {% for filename in inline_js %}
-    {% include filename %}
-    {% endfor %}
+    const rq=(c,b,a)=>{a=new XMLHttpRequest;a.open(b.m||"GET",c);a.responseType=b.r||"";a.timeout=b.t||0;Object.keys(b.h||0).forEach(c=>a.setRequestHeader(c,b.h[c]));return new Promise((c,d)=>{a.onreadystatechange=b=>{4==a.readyState&&[d,c][(!!a.response&&1==(a.status/200|0))|0](a)};a.ontimeout=b=>d(a);a.send(b.b||[]._)})};
 </script>
+<script src="/static/js/mapp.min.js" type="application/javascript"></script>
 
-{# external scripts #}
-{% for filename in js_files %}
-<script src="{{ static_file(filename, 'js') }}" type="application/javascript"></script>
-{% endfor %}
-
-{# scripts ripped out of the partial #}
-{% filter extract_tag("script") %}
-{% include page_filename %}
-{% endfilter %}
-
-
+{{ scripts }}
 </body>
+
+
 </html>

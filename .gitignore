@@ -62,4 +62,4 @@ target/
 # Versioning
 .python-version
 
-manual_test.py
+tests/output
