@@ -42,7 +42,9 @@ def extract_main(soup: bs4.BeautifulSoup, context: MutableMapping) -> None:
 
 
 def prettify_html(rendered: str) -> str:
-    return bs4.BeautifulSoup(rendered, "html.parser").prettify()
+    # TODO find a proper html prettify that doesn't add significant whitespace
+    # return bs4.BeautifulSoup(rendered, "html.parser").prettify()
+    return rendered
 
 
 def extract_scripts(soup: bs4.BeautifulSoup, context: MutableMapping) -> None:

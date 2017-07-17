@@ -5,7 +5,7 @@ from jinja2 import Environment, FileSystemLoader
 
 from . import render
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 GRITS_TEMPLATES = Path(os.path.abspath(os.path.dirname(__file__))).resolve() / "templates"
 DEFAULT_JINJA_OPTIONS = {"trim_blocks": True, "lstrip_blocks": True}
 

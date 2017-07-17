@@ -1,6 +1,13 @@
 Change Log
 ~~~~~~~~~~
 
+====================
+[0.5.1] - 2017.07.16
+====================
+
+``prettify_html`` is a noop for now, since ``BeautifulSoup.prettify`` was
+inserting significant whitespace into elements.
+
 ==================
 [0.5] - 2017.06.14
 ==================
