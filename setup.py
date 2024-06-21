@@ -19,7 +19,7 @@ def get_version():
 REQUIREMENTS = [
     "beautifulsoup4==4.6.0",
     "click==6.7",
-    "jinja2==2.9.5",
+    "jinja2==3.1.4",
 ]
 
 if __name__ == "__main__":
